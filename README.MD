@@ -1,13 +1,14 @@
 
-#Infrastructure
-##kafka
+# Infrastructure
+
+## kafka     
 I followed this guide to set up a kafka service: https://medium.com/big-data-engineering/hello-kafka-world-the-complete-guide-to-kafka-with-docker-and-python-f788e2588cfc    
 
 Using `docker-compose` I set up two topics, one for each business step that this project is composed:    
 1- collector: this kind of task is responsible to get domains content using an HTTP GET requests    
 2- regexp: for each `DomainChecker` a task of this type is generated and enqueued in this topic.
 
-###topic creation (extracted from hello-kafka-world)
+### topic creation (extracted from hello-kafka-world)
 ```
 $KAFKA_HOME/bin/kafka-topics.sh --create --topic collector \
 --partitions 4 --replication-factor 1 \
@@ -18,7 +19,7 @@ $KAFKA_HOME/bin/kafka-topics.sh --create --topic regexp \
 --bootstrap-server `broker-list.sh`
 ```
 
-##Postgresql
+## Postgresql
 I set up a postgresql node with port mapping and other usefull configurations using this two posts    
 1- https://stackabuse.com/working-with-postgresql-in-python/    
 2- https://towardsdatascience.com/local-development-set-up-of-postgresql-with-docker-c022632f13ea    
@@ -31,7 +32,7 @@ docker run -d --name dev-postgres -e POSTGRES_PASSWORD=Pass2020! \
 postgres
 ```
 
-#Project Entities
+# Project Entities
 ![er](ER.png "ER")
 - **Domain**: Entity that represents the domains to be tracked.     
 - **DomainChecker**: Entity where all desired checks will be created and related with a Domain    
